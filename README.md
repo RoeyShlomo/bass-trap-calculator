@@ -5,8 +5,8 @@ Absorption modelling for bass traps, and how many a room needs.
 **Live: https://roeyshlomo.github.io/bass-trap-calculator/**
 
 Four absorber models — limp membrane, MDF plate, Helmholtz resonator and
-perforated panel — over air or porous-filled cavities, plus a room calculator
-that turns a target decay time into a trap count.
+perforated or slatted panel — over air or porous-filled cavities, plus a room
+calculator that turns a target decay time into a trap count.
 
 Everything runs in the browser. No install, no server, no data leaves the page.
 
@@ -17,25 +17,40 @@ Everything runs in the browser. No install, no server, no data leaves the page.
 | Limp membrane / MLV | mass reactance over an exact cavity impedance |
 | MDF plate | transformed-section laminate stiffness, Warburton frequency coefficients |
 | Helmholtz resonator | end corrections per neck type; viscous, end and radiation losses |
-| Perforated panel | Maa |
-| Porous fill | Delany–Bazley, with Johnson–Champoux–Allard available |
+| Perforated panel | transfer model with an open-area-dependent end correction; Maa for microperforation |
+| Slatted panel | slot end correction and mass, over the same cavity |
+| Resistive layer | flow resistance at the openings or out in the cavity |
+| Porous fill | Mechel–Grundmann in the bass, Delany–Bazley above it |
 
-Absorption is computed at **normal incidence**, which is the right choice at bass
-wavelengths, so these figures are not comparable with random-incidence
-reverberation-chamber data.
+The trap designer computes absorption at **normal incidence**, which is the right
+choice at bass wavelengths, so those figures are not comparable with
+reverberation-chamber data. The room calculator converts to random incidence with
+Paris' formula before it reaches Sabine, because Sabine assumes a diffuse field.
 
-Results are labelled by confidence. Resonance frequencies, room modes and
-geometry are analytical and hold to roughly ±5% when the material properties are
-known. Absorption coefficient, Q and bandwidth depend on construction quality,
-tolerances, air leaks and placement — a built trap typically lands 10–30% below
-the theoretical figure. Below the Schroeder frequency, Sabine and Eyring assume a
-diffuse field that does not exist, and the room calculator says so when it applies.
+Results are labelled by confidence. Room modes and geometry are analytical and
+hold to roughly ±5% when the material properties are known. A panel absorber's
+resonance is reported as a ±10% band rather than a single figure, because even a
+transfer-matrix prediction of a measured absorber is about that far out.
+Absorption coefficient, Q and bandwidth depend on construction quality,
+tolerances, air leaks, placement and on a damping figure that is assumed rather
+than measured — there is no formula for the mounting losses that dominate it — so
+a built trap typically lands 10–30% below the theoretical figure.
+
+Below the Schroeder frequency the room is modal, not diffuse, so the calculator
+stops presenting a Sabine trap count as an answer there: it dims the number and
+shows the modes instead, with each one's present half-power width, the width the
+target decay implies, and how much of that mode a trap in that position can
+actually reach.
+
+Trap placement is computed from the modal pressure over the trap's face rather
+than a category, so a trap standing at a pressure node reads as doing nothing —
+because it does nothing.
 
 ## This repository
 
 Holds the built page only, so it can be served from GitHub Pages. The source, the
-specification it implements and its formula audit live in a separate private
-repository.
+specification it implements, its formula audit and the literature review behind
+the models live in a separate private repository.
 
 `site/index.html` is a single self-contained file with no external references. It
 also works offline: download it and open it in any browser.
