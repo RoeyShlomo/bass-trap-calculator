@@ -21,6 +21,7 @@ Everything runs in the browser. No install, no server, no data leaves the page.
 | Slatted panel | slot end correction and mass, over the same cavity |
 | Resistive layer | flow resistance at the openings or out in the cavity |
 | Porous fill | Mechel–Grundmann in the bass, Delany–Bazley above it |
+| Flow resistivity | measured, or Bies–Hansen from density and fibre diameter |
 
 The trap designer computes absorption at **normal incidence**, which is the right
 choice at bass wavelengths, so those figures are not comparable with
@@ -45,6 +46,14 @@ actually reach.
 Trap placement is computed from the modal pressure over the trap's face rather
 than a category, so a trap standing at a pressure node reads as doing nothing —
 because it does nothing.
+
+The room page offers the ITU-R BS.1116 target for the room's volume, at the
+frequency being worked on rather than only the broadband nominal, since the
+standard's tolerance widens upward through the bass. Where BS.1116 specifies
+nothing — below 63 Hz, which is most of what a bass trap is for — it says so
+instead of extending the curve.
+
+Air properties are those of the stated 20 °C: ρ₀ = 1.204 kg/m³ with c₀ = 343 m/s.
 
 ## This repository
 
