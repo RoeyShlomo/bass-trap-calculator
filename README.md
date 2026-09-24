@@ -4,9 +4,10 @@ Absorption modelling for bass traps, and how many a room needs.
 
 **Live: https://roeyshlomo.github.io/bass-trap-calculator/**
 
-Four absorber models — limp membrane, MDF plate, Helmholtz resonator and
-perforated or slatted panel — over air or porous-filled cavities, plus a room
-calculator that turns a target decay time into a trap count.
+Five absorber models — limp membrane, MDF plate, Helmholtz resonator,
+perforated or slatted panel, and a hybrid stack of two faces — over air or
+porous-filled cavities, plus a room calculator that turns a target decay time
+into a trap count, and a cut list for whatever you settle on.
 
 Everything runs in the browser. No install, no server, no data leaves the page.
 
@@ -22,6 +23,8 @@ Everything runs in the browser. No install, no server, no data leaves the page.
 | Resistive layer | flow resistance at the openings or out in the cavity |
 | Porous fill | Mechel–Grundmann in the bass, Delany–Bazley above it |
 | Flow resistivity | measured, or Bies–Hansen from density and fibre diameter |
+| Hybrid stack | two faces over one cavity, composed through the transfer matrix |
+| Build quality | air leaks as a parallel path, cabinet flex as a spring in series |
 
 The trap designer computes absorption at **normal incidence**, which is the right
 choice at bass wavelengths, so those figures are not comparable with
@@ -53,7 +56,20 @@ standard's tolerance widens upward through the bass. Where BS.1116 specifies
 nothing — below 63 Hz, which is most of what a bass trap is for — it says so
 instead of extending the curve.
 
+Leaks and cabinet flex are modelled, and the leak result is worth knowing
+before you build: a leak does not deaden a trap, it detunes it. Peak absorption
+barely moves — it can even rise — while the resonance climbs and absorption at
+the frequency you designed for collapses. A 1 mm slot down one long edge costs
+more than half of it. Neither leak area nor cabinet stiffness is predicted;
+they are inputs, so the question the tool answers is whether a gap that size
+matters for your design.
+
 Air properties are those of the stated 20 °C: ρ₀ = 1.204 kg/m³ with c₀ = 343 m/s.
+
+**Not modelled:** finite panel size and edge diffraction. Every figure here is
+for an infinite surface, and at bass frequencies a real trap is small against
+the wavelength — which is the regime where that matters most, and part of why
+chamber measurements of small samples exceed an absorption coefficient of 1.0.
 
 ## This repository
 
